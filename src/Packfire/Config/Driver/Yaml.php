@@ -12,7 +12,7 @@
 namespace Packfire\Config\Driver;
 
 use Packfire\Config\Config;
-use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Yaml\Yaml as Parser;
 
 /**
  * A YAML Configuration File
@@ -23,14 +23,14 @@ use Symfony\Component\Yaml\Yaml;
  * @package Packfire\Config\Driver
  * @since 1.0.0
  */
-class YamlConfig extends Config {
+class Yaml extends Config {
 
     /**
      * Read the configuration file
      * @since 1.0.0
      */
     public function read() {
-        $this->data = Yaml::parse($this->file);
+        $this->data = Parser::parse($this->file);
     }
 
 }

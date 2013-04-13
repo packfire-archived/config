@@ -22,7 +22,7 @@ use Packfire\Config\Config;
  * @package Packfire\Config\Driver
  * @since 1.0.0
  */
-class IniConfig extends Config {
+class Ini extends Config {
     
     /**
      * Read the configuration file 

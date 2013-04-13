@@ -22,7 +22,7 @@ use Packfire\Config\Config;
  * @package Packfire\Config\Driver
  * @since 1.0.0
  */
-class JsonConfig extends Config {
+class Json extends Config {
 
     /**
      * Read the configuration file

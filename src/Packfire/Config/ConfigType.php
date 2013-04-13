@@ -29,11 +29,11 @@ class ConfigType {
      */
     public static function typeMap(){
         static $map = array(
-                'yml' => 'YamlConfig',
-                'yaml' => 'YamlConfig',
-                'json' => 'JsonConfig,'
-                'ini' => 'IniConfig',
-                'php' => 'PhpConfig'
+                'yml' => 'Yaml',
+                'yaml' => 'Yaml',
+                'json' => 'Json',
+                'ini' => 'Ini',
+                'php' => 'Php'
             );
         return $map;
     }
