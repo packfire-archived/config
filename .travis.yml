@@ -1,0 +1,12 @@
+# Packfire Framework for PHP
+#
+# this file provides configuration for Travis Continuous Integration
+# See Packfire on TravisCI at http://travis-ci.org/packfire/packfire-framework
+
+language: php
+php:
+  - 5.3
+  - 5.3.3
+  - 5.4
+after_script:
+  - "wget --quiet http://mauris.sg/bin/pdc.phar && php pdc.phar src"
