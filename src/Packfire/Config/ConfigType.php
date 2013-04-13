@@ -31,6 +31,7 @@ class ConfigType {
         static $map = array(
                 'yml' => 'YamlConfig',
                 'yaml' => 'YamlConfig',
+                'json' => 'JsonConfig,'
                 'ini' => 'IniConfig',
                 'php' => 'PhpConfig'
             );
