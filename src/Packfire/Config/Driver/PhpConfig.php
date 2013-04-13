@@ -20,13 +20,13 @@ use Packfire\Config\Config;
  * @copyright Copyright (c) Sam-Mauris Yong
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
  * @package Packfire\Config\Driver
- * @since 1.0-sofia
+ * @since 1.0.0
  */
 class PhpConfig extends Config {
 
     /**
      * Read the configuration file
-     * @since 1.0-sofia
+     * @since 1.0.0
      */
     public function read() {
         $this->data = include($this->file);

@@ -20,13 +20,13 @@ use Packfire\Config\Config;
  * @copyright Copyright (c) Sam-Mauris Yong
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
  * @package Packfire\Config\Driver
- * @since 2.0.2
+ * @since 1.0.0
  */
 class JsonConfig extends Config {
 
     /**
      * Read the configuration file
-     * @since 2.0.2
+     * @since 1.0.0
      */
     public function read() {
         $this->data = json_decode(file_get_contents($this->file), true);
