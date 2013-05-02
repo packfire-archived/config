@@ -12,7 +12,6 @@
 namespace Packfire\Config;
 
 use Packfire\Config\ConfigType;
-use Packfire\IO\File\Path;
 
 /**
  * Factory class to create the appropriate Config class
@@ -35,7 +34,7 @@ class ConfigFactory {
      */
     public function load($file, $defaults = null){
         $map = ConfigType::typeMap();
-        $ext = Path::extension($file);
+        $ext = pathinfo($file, PATHINFO_EXTENSION);
         if(isset($map[$ext])){
             $class = 'Packfire\\Config\\Driver\\' . $map[$ext];
             $config = new $class($file);
