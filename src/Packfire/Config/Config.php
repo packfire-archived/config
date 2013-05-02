@@ -12,7 +12,6 @@
 namespace Packfire\Config;
 
 use Packfire\Config\IConfig;
-use Packfire\Collection\ArrayHelper;
 
 /**
  * A generic configuration file
@@ -60,8 +59,7 @@ abstract class Config implements IConfig {
      * @since 2.1.0
      */
     public function defaults(Config $defaults){
-        $this->data = ArrayHelper::mergeRecursiveDistinct(
-                $defaults->data, $this->data);
+        $this->data = ArrayUtility::mergeRecursiveDistinct($defaults->data, $this->data);
     }
     
     /**
