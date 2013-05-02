@@ -3,35 +3,29 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f64906b99eb4e2e83a98d8816fbf5741",
+    "hash": "e3cdcb43c0ffe1ed3842f6abf8b234e6",
     "packages": [
         {
-            "name": "symfony/yaml",
-            "version": "v2.2.1",
-            "target-dir": "Symfony/Component/Yaml",
+            "name": "mauris/yaml",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Yaml.git",
-                "reference": "v2.2.1"
+                "url": "https://github.com/thephpdeveloper/Yaml.git",
+                "reference": "1.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/v2.2.1",
-                "reference": "v2.2.1",
+                "url": "https://api.github.com/repos/thephpdeveloper/Yaml/zipball/1.0.0",
+                "reference": "1.0.0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
-                    "Symfony\\Component\\Yaml\\": ""
+                    "Symfony\\Component\\Yaml\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -46,11 +40,19 @@
                 {
                     "name": "Symfony Community",
                     "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Sam-Mauris Yong",
+                    "email": "sam@mauris.sg"
                 }
             ],
-            "description": "Symfony Yaml Component",
+            "description": "Mauris Build of the Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2013-03-23 07:49:54"
+            "keywords": [
+                "parser",
+                "yaml"
+            ],
+            "time": "2013-05-02 11:55:31"
         }
     ],
     "packages-dev": [
