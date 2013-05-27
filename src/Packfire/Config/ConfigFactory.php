@@ -11,8 +11,6 @@
 
 namespace Packfire\Config;
 
-use Packfire\Config\ConfigType;
-
 /**
  * Factory class to create the appropriate Config class
  *

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e3cdcb43c0ffe1ed3842f6abf8b234e6",
+    "hash": "645ec354d34f7146bf4c88a0d995076b",
     "packages": [
         {
             "name": "mauris/yaml",

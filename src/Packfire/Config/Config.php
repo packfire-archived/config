@@ -11,8 +11,6 @@
 
 namespace Packfire\Config;
 
-use Packfire\Config\IConfig;
-
 /**
  * A generic configuration file
  *
