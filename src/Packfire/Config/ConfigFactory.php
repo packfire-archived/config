@@ -3,7 +3,7 @@
 /**
  * Packfire Framework for PHP
  * By Sam-Mauris Yong
- * 
+ *
  * Released open source under New BSD 3-Clause License.
  * Copyright (c) Sam-Mauris Yong <sam@mauris.sg>
  * All rights reserved.
@@ -20,8 +20,8 @@ namespace Packfire\Config;
  * @package Packfire\Config
  * @since 1.0.0
  */
-class ConfigFactory {
-
+class ConfigFactory
+{
     /**
      * Load a configuration file
      * @param string $file Path to the configuration file
@@ -30,20 +30,20 @@ class ConfigFactory {
      *                 find the appropriate configuration parser.
      * @since 1.0
      */
-    public function load($file, $defaults = null){
+    public function load($file, $defaults = null)
+    {
         $map = ConfigType::typeMap();
         $ext = pathinfo($file, PATHINFO_EXTENSION);
-        if(isset($map[$ext])){
+        if (isset($map[$ext])) {
             $class = 'Packfire\\Config\\Driver\\' . $map[$ext];
             $config = new $class($file);
             $config->read();
-            if($defaults){
+            if ($defaults) {
                 $config->defaults($defaults);
             }
             return $config;
-        }else{
+        } else {
             return null;
         }
     }
-
 }

@@ -1,18 +1,19 @@
 <?php
 namespace Packfire\Config\Driver;
 
-abstract class ConfigTestSetter extends \PHPUnit_Framework_TestCase {
-
+abstract class ConfigTestSetter extends \PHPUnit_Framework_TestCase
+{
     /**
      * @var \Packfire\Config\IConfig
      */
     protected $object;
-    
+
     protected $file = 'test/Files/sampleConfig';
-    
-    public function prepare($class){
+
+    public function prepare($class)
+    {
         $this->object = $this->getMock($class, array('read'), array($this->file));
-        
+
         $property = new \ReflectionProperty($this->object, 'data');
         $property->setAccessible(true);
         $data = array(
@@ -36,15 +37,17 @@ abstract class ConfigTestSetter extends \PHPUnit_Framework_TestCase {
         );
         $property->setValue($this->object, $data);
     }
-    
+
     /**
      * @covers \Packfire\Config\Driver\IniConfig::file
      */
-    public function testFile(){
+    public function testFile()
+    {
         $this->assertEquals($this->file, $this->object->file());
     }
 
-    public function testConfigParse(){
+    public function testConfigParse()
+    {
         $this->assertNotNull($this->object->get('first_section'));
         $this->assertNotNull($this->object->get('second_section'));
         $this->assertNotNull($this->object->get('third_section'));
@@ -53,10 +56,12 @@ abstract class ConfigTestSetter extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(1, $this->object->get('first_section', 'one'));
         $this->assertEquals('BIRD', $this->object->get('first_section', 'animal'));
 
-        $this->assertEquals(array(
-            'path' => '/usr/local/bin',
-            'URL' => 'http://www.example.com/~username'
-        ), $this->object->get('second_section'));
+        $this->assertEquals(
+            array(
+                'path' => '/usr/local/bin',
+                'URL' => 'http://www.example.com/~username'
+            ),
+            $this->object->get('second_section')
+        );
     }
-    
 }
