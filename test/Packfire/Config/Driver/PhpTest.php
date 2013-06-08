@@ -12,11 +12,11 @@ class PhpTest extends ConfigTestSetter
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
-     * @covers \Packfire\Config\Driver\PhpConfig::read
+     * @covers \Packfire\Config\Driver\Php::read
      */
     protected function setUp()
     {
-        $this->prepare('\\Packfire\\Config\\Driver\\Php');
+        $this->prepare('Packfire\\Config\\Driver\\Php');
     }
 
     /**
