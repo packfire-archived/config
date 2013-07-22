@@ -13,6 +13,7 @@ namespace Packfire\Config\Driver;
 
 use Packfire\Config\Config;
 use Symfony\Component\Yaml\Yaml as Parser;
+use Symfony\Component\Yaml\Dumper;
 
 /**
  * A YAML Configuration File
@@ -39,6 +40,8 @@ class Yaml extends Config
      */
     public function write($file = null)
     {
-        
+        $dumper = new Dumper();
+        $yaml = $dumper->dump($this->data);
+        file_put_contents($file ? $file : $this->file, $yaml);
     }
 }
