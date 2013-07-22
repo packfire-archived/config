@@ -57,7 +57,7 @@ abstract class Config implements IConfig
      * @param string $file (optional) The name of the file to write to. If not provided, it will write over the original file.
      * @since 1.0.3
      */
-    abstract public function write($file = '');
+    abstract public function write($file = null);
 
     /**
      * Set the defaults for missing configuration

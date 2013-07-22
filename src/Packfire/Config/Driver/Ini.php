@@ -35,7 +35,7 @@ class Ini extends Config
     /**
      * {@inheritdoc}
      */
-    public function write($file = '')
+    public function write($file = null)
     {
         
     }

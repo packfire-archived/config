@@ -35,7 +35,7 @@ class Php extends Config
     /**
      * {@inheritdoc}
      */
-    public function write($file = '')
+    public function write($file = null)
     {
         
     }
