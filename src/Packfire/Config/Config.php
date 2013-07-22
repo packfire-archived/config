@@ -34,7 +34,7 @@ abstract class Config implements IConfig
      * @var array
      * @since 1.0-sofia
      */
-    protected $data;
+    protected $data = array();
 
     /**
      * Create a new configuration file
