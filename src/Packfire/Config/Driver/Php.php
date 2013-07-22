@@ -37,6 +37,7 @@ class Php extends Config
      */
     public function write($file = null)
     {
-        
+        $output = "<?php\nreturn " . var_export($this->data, true) . ';';
+        file_put_contents($file ? $file : $this->file, $output);
     }
 }
