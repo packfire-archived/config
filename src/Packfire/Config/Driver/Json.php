@@ -12,6 +12,7 @@
 namespace Packfire\Config\Driver;
 
 use Packfire\Config\Config;
+use Camspiers\JsonPretty\JsonPretty;
 
 /**
  * A JSON configuration file that returns an array of configuration information.
@@ -37,7 +38,8 @@ class Json extends Config
      */
     public function write($file = null)
     {
-        $output = json_encode($this->data);
+        $jsonPretty = new JsonPretty();
+        $output = $jsonPretty->prettify($this->data);
         file_put_contents($file ? $file : $this->file, $output);
     }
 }
