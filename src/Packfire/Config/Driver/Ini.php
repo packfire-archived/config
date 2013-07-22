@@ -25,11 +25,18 @@ use Packfire\Config\Config;
 class Ini extends Config
 {
     /**
-     * Read the configuration file
-     * @since 1.0.0
+     * {@inheritdoc}
      */
     public function read()
     {
         $this->data = parse_ini_file($this->file, true);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function write($file = '')
+    {
+        
     }
 }

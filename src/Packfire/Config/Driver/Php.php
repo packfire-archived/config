@@ -25,11 +25,18 @@ use Packfire\Config\Config;
 class Php extends Config
 {
     /**
-     * Read the configuration file
-     * @since 1.0.0
+     * {@inheritdoc}
      */
     public function read()
     {
         $this->data = include($this->file);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function write($file = '')
+    {
+        
     }
 }

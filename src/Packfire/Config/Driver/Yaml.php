@@ -33,4 +33,12 @@ class Yaml extends Config
     {
         $this->data = Parser::parse($this->file);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function write($file = '')
+    {
+        
+    }
 }

@@ -53,6 +53,13 @@ abstract class Config implements IConfig
     abstract public function read();
 
     /**
+     * Write to a configuration file
+     * @param string $file (optional) The name of the file to write to. If not provided, it will write over the original file.
+     * @since 1.0.3
+     */
+    abstract public function write($file = '');
+
+    /**
      * Set the defaults for missing configuration
      * @param \Packfire\Config\Config $defaults The default configuration to place
      * @since 2.1.0
@@ -103,5 +110,39 @@ abstract class Config implements IConfig
             }
         }
         return $data;
+    }
+
+    /**
+     * Set a value to the configuration data
+     *
+     * You can set values nested inside arrays by entering multiple keys as
+     * arguments to the method.
+     *
+     * Example:
+     * <code>$config->set('app', 'name', 'Packfire'); </code>
+     * <code>$config->set('database', 'default', 'host', 'localhost');</code>
+     *
+     * @param string $key,... The key of the data to load.
+     * @param mixed $value,... The value to set
+     * @since 1.0.2
+     */
+    public function set($key, $value)
+    {
+        $keys = func_get_args();
+        $value = array_pop($keys);
+        $this->setValueRecursive($this->data, $keys, $value);
+    }
+
+    protected function setValueRecursive(&$scope, $keys, $value)
+    {
+        $key = array_shift($keys);
+        if ($keys) {
+            if (!isset($scope[$key]) || null === $scope[$key]) {
+                $scope[$key] = array();
+            }
+            $this->setValueRecursive($scope[$key], $keys, $value);
+        } else {
+            $scope[$key] = $value;
+        }
     }
 }

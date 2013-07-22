@@ -25,11 +25,18 @@ use Packfire\Config\Config;
 class Json extends Config
 {
     /**
-     * Read the configuration file
-     * @since 1.0.0
+     * {@inheritdoc}
      */
     public function read()
     {
         $this->data = json_decode(file_get_contents($this->file), true);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function write($file = '')
+    {
+        
     }
 }

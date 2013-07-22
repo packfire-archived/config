@@ -43,7 +43,7 @@ abstract class ConfigTestSetter extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->file, $this->object->file());
     }
 
-    public function testConfigParse()
+    public function testConfigGet()
     {
         $this->assertNotNull($this->object->get('first_section'));
         $this->assertNotNull($this->object->get('second_section'));
@@ -60,5 +60,13 @@ abstract class ConfigTestSetter extends \PHPUnit_Framework_TestCase
             ),
             $this->object->get('second_section')
         );
+    }
+
+    public function testConfigSet()
+    {
+        $this->object->set('first_section', 'one', 5);
+        $this->assertEquals(5, $this->object->get('first_section', 'one'));
+        $this->object->set('once', false);
+        $this->assertEquals(false, $this->object->get('once'));
     }
 }
