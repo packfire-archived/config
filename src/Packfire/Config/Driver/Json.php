@@ -37,6 +37,7 @@ class Json extends Config
      */
     public function write($file = null)
     {
-        
+        $output = json_encode($this->data);
+        file_put_contents($file ? $file : $this->file, $output);
     }
 }
