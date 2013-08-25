@@ -12,7 +12,8 @@
     "require": {
         "php": ">=5.3.0",
         "mauris/yaml": "1.0.*",
-        "camspiers/json-pretty": "0.1.*"
+        "camspiers/json-pretty": "0.1.*",
+        "mauris/ini-writer": "1.0.*"
     },
     "require-dev":{
         "mikey179/vfsStream": "1.2.*"
