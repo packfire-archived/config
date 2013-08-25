@@ -12,6 +12,7 @@
 namespace Packfire\Config\Driver;
 
 use Packfire\Config\Config;
+use Mauris\Ini\Dumper;
 
 /**
  * An INI configuration file
@@ -37,6 +38,8 @@ class Ini extends Config
      */
     public function write($file = null)
     {
-        
+        $dumper = new Dumper();
+        $output = $dumper->dump($this->data);
+        file_put_contents($file ? $file : $this->file, $output);
     }
 }
