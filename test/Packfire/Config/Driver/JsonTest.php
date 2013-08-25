@@ -25,7 +25,6 @@ class JsonTest extends ConfigTestSetter
     }
 }
 EOT;
-        
         $root = vfsStream::setup('root');
         $file = vfsStream::newFile('config.json');
         $root->addChild($file);
@@ -35,5 +34,26 @@ EOT;
         $reader->read();
 
         $this->assertEquals(array('test' => array('data' => 5, 'route' => false)), $reader->get());
+    }
+
+    public function testWrite()
+    {
+        $root = vfsStream::setup('root');
+        $file = vfsStream::newFile('config.json');
+        $root->addChild($file);
+
+        $reader = new Json(vfsStream::url('root/config.json'));
+        $reader->set('test', 5);
+        $reader->set('alpha', 'bravo', 5);
+
+        $reader->write();
+
+        $expected = array(
+            'test' => 5,
+            'alpha' => array(
+                'bravo' => 5
+            )
+        );
+        $this->assertEquals($expected, json_decode(file_get_contents(vfsStream::url('root/config.json')), true));
     }
 }
