@@ -3,7 +3,7 @@
 /**
  * Packfire Framework for PHP
  * By Sam-Mauris Yong
- * 
+ *
  * Released open source under New BSD 3-Clause License.
  * Copyright (c) Sam-Mauris Yong <sam@mauris.sg>
  * All rights reserved.
@@ -22,14 +22,22 @@ use Packfire\Config\Config;
  * @package Packfire\Config\Driver
  * @since 1.0.0
  */
-class Php extends Config {
-
+class Php extends Config
+{
     /**
-     * Read the configuration file
-     * @since 1.0.0
+     * {@inheritdoc}
      */
-    public function read() {
+    public function read()
+    {
         $this->data = include($this->file);
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function write($file = null)
+    {
+        $output = "<?php\nreturn " . var_export($this->data, true) . ';';
+        file_put_contents($file ? $file : $this->file, $output);
+    }
 }

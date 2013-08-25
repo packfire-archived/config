@@ -3,7 +3,7 @@
 /**
  * Packfire Framework for PHP
  * By Sam-Mauris Yong
- * 
+ *
  * Released open source under New BSD 3-Clause License.
  * Copyright (c) Sam-Mauris Yong <sam@mauris.sg>
  * All rights reserved.
@@ -20,14 +20,15 @@ namespace Packfire\Config;
  * @package Packfire\Config
  * @since 1.0.0
  */
-class ConfigType {
-    
+class ConfigType
+{
     /**
      * Provides the file type and class mapping information
      * @return array Returns the file type and class mapping information in array.
-     * @since 1.0.0 
+     * @since 1.0.0
      */
-    public static function typeMap(){
+    public static function typeMap()
+    {
         static $map = array(
                 'yml' => 'Yaml',
                 'yaml' => 'Yaml',
@@ -37,5 +38,4 @@ class ConfigType {
             );
         return $map;
     }
-    
 }
