@@ -20,7 +20,7 @@ namespace Packfire\Config;
  * @package Packfire\Config
  * @since 1.0.0
  */
-abstract class Config implements IConfig
+abstract class Config implements ConfigInterface
 {
     /**
      * The pathname to the configuration file
