@@ -11,8 +11,6 @@
 
 namespace Packfire\Config;
 
-use Packfire\Config\IConfig;
-
 /**
  * A generic configuration file
  *
@@ -22,55 +20,58 @@ use Packfire\Config\IConfig;
  * @package Packfire\Config
  * @since 1.0.0
  */
-abstract class Config implements IConfig {
-    
+abstract class Config implements ConfigInterface
+{
     /**
      * The pathname to the configuration file
      * @var string
      * @since 1.0-sofia
      */
     protected $file;
-    
+
     /**
      * The data read from the configuration file
      * @var array
      * @since 1.0-sofia
      */
     protected $data;
-    
+
     /**
      * Create a new configuration file
      * @param string $file Name of the configuration file to load
      * @since 1.0-sofia
      */
-    public function __construct($file){
+    public function __construct($file)
+    {
         $this->file = $file;
     }
-    
+
     /**
      * Read the configuration file 
      * @since 1.0-sofia
      */
-    public abstract function read();
-    
+    abstract public function read();
+
     /**
      * Set the defaults for missing configuration
      * @param \Packfire\Config\Config $defaults The default configuration to place
      * @since 2.1.0
      */
-    public function defaults(Config $defaults){
+    public function defaults(Config $defaults)
+    {
         $this->data = ArrayUtility::mergeRecursiveDistinct($defaults->data, $this->data);
     }
-    
+
     /**
      * Get the path to the file loaded
      * @return string Returns the path to the configuration file.
      * @since 1.0-sofia
      */
-    public function file(){
+    public function file()
+    {
         return $this->file;
     }
-    
+
     /**
      * Get the value from the configuration file.
      * 
@@ -85,22 +86,22 @@ abstract class Config implements IConfig {
      * @return mixed Returns the data read or NULL if the key is not found.
      * @since 1.0-sofia
      */
-    public function get(){
+    public function get()
+    {
         $keys = func_get_args();
         $data = $this->data;
-        foreach($keys as $key){
-            if(is_array($data)){
-                if(isset($data[$key])){
+        foreach ($keys as $key) {
+            if (is_array($data)) {
+                if (isset($data[$key])) {
                     $data = $data[$key];
-                }else{
+                } else {
                     $data = null;
                     break;
                 }
-            }else{
+            } else {
                 break;
             }
         }
         return $data;
     }
-    
 }
