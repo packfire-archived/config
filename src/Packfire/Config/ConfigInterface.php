@@ -20,7 +20,7 @@ namespace Packfire\Config;
  * @package Packfire\Config
  * @since 1.0.0
  */
-interface ConfigInterface
+interface IConfig
 {
     /**
      * Get the value from the configuration file.

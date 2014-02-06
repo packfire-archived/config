@@ -3,7 +3,7 @@
 /**
  * Packfire Framework for PHP
  * By Sam-Mauris Yong
- * 
+ *
  * Released open source under New BSD 3-Clause License.
  * Copyright (c) Sam-Mauris Yong <sam@mauris.sg>
  * All rights reserved.
@@ -20,7 +20,7 @@ namespace Packfire\Config;
  * @package Packfire\Config
  * @since 1.0.0
  */
-abstract class Config implements ConfigInterface
+abstract class Config implements IConfig
 {
     /**
      * The pathname to the configuration file
@@ -34,7 +34,7 @@ abstract class Config implements ConfigInterface
      * @var array
      * @since 1.0-sofia
      */
-    protected $data;
+    protected $data = array();
 
     /**
      * Create a new configuration file
@@ -47,10 +47,17 @@ abstract class Config implements ConfigInterface
     }
 
     /**
-     * Read the configuration file 
+     * Read the configuration file
      * @since 1.0-sofia
      */
     abstract public function read();
+
+    /**
+     * Write to a configuration file
+     * @param string $file (optional) The name of the file to write to. If not provided, it will write over the original file.
+     * @since 1.0.3
+     */
+    abstract public function write($file = null);
 
     /**
      * Set the defaults for missing configuration
@@ -74,15 +81,15 @@ abstract class Config implements ConfigInterface
 
     /**
      * Get the value from the configuration file.
-     * 
+     *
      * You can get values nested inside arrays by entering multiple keys as
      * arguments to the method.
-     * 
+     *
      * Example:
      * <code>$value = $config->get('app', 'name'); // $data = array('app' => array('name' => 'Packfire')); </code>
      * <code>$value = $config->get('database', 'default', 'host'); // $data = array('database' => array('default' => array('host' => 'localhost'))); </code>
-     * 
-     * @param string $key,... The key of the data to load. 
+     *
+     * @param string $key,... The key of the data to load.
      * @return mixed Returns the data read or NULL if the key is not found.
      * @since 1.0-sofia
      */
@@ -103,5 +110,39 @@ abstract class Config implements ConfigInterface
             }
         }
         return $data;
+    }
+
+    /**
+     * Set a value to the configuration data
+     *
+     * You can set values nested inside arrays by entering multiple keys as
+     * arguments to the method.
+     *
+     * Example:
+     * <code>$config->set('app', 'name', 'Packfire'); </code>
+     * <code>$config->set('database', 'default', 'host', 'localhost');</code>
+     *
+     * @param string $key,... The key of the data to load.
+     * @param mixed $value,... The value to set
+     * @since 1.0.2
+     */
+    public function set($key, $value)
+    {
+        $keys = func_get_args();
+        $value = array_pop($keys);
+        $this->setValueRecursive($this->data, $keys, $value);
+    }
+
+    protected function setValueRecursive(&$scope, $keys, $value)
+    {
+        $key = array_shift($keys);
+        if ($keys) {
+            if (!isset($scope[$key]) || null === $scope[$key]) {
+                $scope[$key] = array();
+            }
+            $this->setValueRecursive($scope[$key], $keys, $value);
+        } else {
+            $scope[$key] = $value;
+        }
     }
 }
