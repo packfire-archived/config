@@ -25,21 +25,21 @@ abstract class Config implements ConfigInterface
     /**
      * The pathname to the configuration file
      * @var string
-     * @since 1.0-sofia
+     * @since 1.0.0
      */
     protected $file;
 
     /**
      * The data read from the configuration file
      * @var array
-     * @since 1.0-sofia
+     * @since 1.0.0
      */
     protected $data = array();
 
     /**
      * Create a new configuration file
      * @param string $file Name of the configuration file to load
-     * @since 1.0-sofia
+     * @since 1.0.0
      */
     public function __construct($file)
     {
@@ -48,7 +48,7 @@ abstract class Config implements ConfigInterface
 
     /**
      * Read the configuration file
-     * @since 1.0-sofia
+     * @since 1.0.0
      */
     abstract public function read();
 
@@ -61,12 +61,22 @@ abstract class Config implements ConfigInterface
 
     /**
      * Set the defaults for missing configuration
-     * @param \Packfire\Config\Config $defaults The default configuration to place
-     * @since 2.1.0
+     * @param \Packfire\Config\ConfigInterface $defaults The default configuration to place
+     * @since 1.0.0
      */
-    public function defaults(Config $defaults)
+    public function defaults(ConfigInterface $defaults)
     {
-        $this->data = ArrayUtility::mergeRecursiveDistinct($defaults->data, $this->data);
+        $this->data = ArrayUtility::mergeRecursiveDistinct($defaults->get(), $this->data);
+    }
+
+    /**
+     * Merge the configuration from the other Config
+     * @param \Packfire\Config\ConfigInterface $config The configuration to merge in
+     * @since 1.2.0
+     */
+    public function merge(ConfigInterface $config)
+    {
+        $this->data = ArrayUtility::mergeRecursiveDistinct($this->data, $config->get());
     }
 
     /**
