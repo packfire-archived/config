@@ -37,4 +37,10 @@ interface ConfigInterface
      * @since 1.0.0
      */
     public function get();
+
+    public function set($key, $value);
+
+    public function defaults(ConfigInterface $defaults);
+
+    public function merge(ConfigInterface $config);
 }
