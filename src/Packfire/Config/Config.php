@@ -18,28 +18,11 @@ namespace Packfire\Config;
 class Config implements ConfigInterface
 {
     /**
-     * The pathname to the configuration file
-     * @var string
-     * @since 1.0.0
-     */
-    protected $file;
-
-    /**
      * The data read from the configuration file
      * @var array
      * @since 1.0.0
      */
     protected $data = array();
-
-    /**
-     * Create a new configuration file
-     * @param string $file Name of the configuration file to load
-     * @since 1.0.0
-     */
-    public function __construct($file)
-    {
-        $this->file = $file;
-    }
 
     /**
      * Set the defaults for missing configuration
