@@ -6,7 +6,7 @@
 
 namespace Packfire\Config\Driver;
 
-use Packfire\Config\Config;
+use Packfire\Config\File;
 use Mauris\Ini\Dumper;
 
 /**
@@ -18,7 +18,7 @@ use Mauris\Ini\Dumper;
  * @package Packfire\Config\Driver
  * @since 1.0.0
  */
-class Ini extends Config
+class Ini extends File
 {
     /**
      * {@inheritdoc}

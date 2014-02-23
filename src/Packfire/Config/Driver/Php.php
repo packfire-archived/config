@@ -6,7 +6,7 @@
 
 namespace Packfire\Config\Driver;
 
-use Packfire\Config\Config;
+use Packfire\Config\File;
 
 /**
  * A PHP configuration file that returns an array of configuration information.
@@ -17,7 +17,7 @@ use Packfire\Config\Config;
  * @package Packfire\Config\Driver
  * @since 1.0.0
  */
-class Php extends Config
+class Php extends File
 {
     /**
      * {@inheritdoc}

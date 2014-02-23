@@ -6,7 +6,7 @@
 
 namespace Packfire\Config\Driver;
 
-use Packfire\Config\Config;
+use Packfire\Config\File;
 use Camspiers\JsonPretty\JsonPretty;
 
 /**
@@ -18,7 +18,7 @@ use Camspiers\JsonPretty\JsonPretty;
  * @package Packfire\Config\Driver
  * @since 1.0.0
  */
-class Json extends Config
+class Json extends File
 {
     /**
      * {@inheritdoc}

@@ -6,7 +6,7 @@
 
 namespace Packfire\Config\Driver;
 
-use Packfire\Config\Config;
+use Packfire\Config\File;
 use Symfony\Component\Yaml\Yaml as Parser;
 use Symfony\Component\Yaml\Dumper;
 
@@ -19,7 +19,7 @@ use Symfony\Component\Yaml\Dumper;
  * @package Packfire\Config\Driver
  * @since 1.0.0
  */
-class Yaml extends Config
+class Yaml extends File
 {
     /**
      * Read the configuration file
