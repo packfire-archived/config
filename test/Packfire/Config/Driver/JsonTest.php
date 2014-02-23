@@ -12,6 +12,11 @@ class JsonTest extends ConfigTestSetter
         $this->prepare('Packfire\\Config\\Driver\\Json');
     }
 
+    public function testFile()
+    {
+        $this->assertEquals($this->file, $this->object->file());
+    }
+
     public function testRead()
     {
         $data = <<<EOT

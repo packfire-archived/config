@@ -12,6 +12,11 @@ class PhpTest extends ConfigTestSetter
         $this->prepare('Packfire\\Config\\Driver\\Php');
     }
 
+    public function testFile()
+    {
+        $this->assertEquals($this->file, $this->object->file());
+    }
+
     public function testRead()
     {
         $data = <<<EOT

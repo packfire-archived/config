@@ -13,6 +13,11 @@ class YamlTest extends ConfigTestSetter
         $this->prepare('Packfire\\Config\\Driver\\Yaml');
     }
 
+    public function testFile()
+    {
+        $this->assertEquals($this->file, $this->object->file());
+    }
+
     public function testRead()
     {
         $data = <<<EOT

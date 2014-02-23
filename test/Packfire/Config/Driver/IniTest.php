@@ -12,6 +12,11 @@ class IniTest extends ConfigTestSetter
         $this->prepare('Packfire\\Config\\Driver\\Ini');
     }
 
+    public function testFile()
+    {
+        $this->assertEquals($this->file, $this->object->file());
+    }
+
     public function testRead()
     {
         $data = <<<EOT

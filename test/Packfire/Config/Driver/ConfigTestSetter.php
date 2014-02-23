@@ -37,36 +37,4 @@ abstract class ConfigTestSetter extends \PHPUnit_Framework_TestCase
         );
         $property->setValue($this->object, $data);
     }
-
-    public function testFile()
-    {
-        $this->assertEquals($this->file, $this->object->file());
-    }
-
-    public function testConfigGet()
-    {
-        $this->assertNotNull($this->object->get('first_section'));
-        $this->assertNotNull($this->object->get('second_section'));
-        $this->assertNotNull($this->object->get('third_section'));
-        $this->assertCount(3, $this->object->get());
-
-        $this->assertEquals(1, $this->object->get('first_section', 'one'));
-        $this->assertEquals('BIRD', $this->object->get('first_section', 'animal'));
-
-        $this->assertEquals(
-            array(
-                'path' => '/usr/local/bin',
-                'URL' => 'http://www.example.com/~username'
-            ),
-            $this->object->get('second_section')
-        );
-    }
-
-    public function testConfigSet()
-    {
-        $this->object->set('first_section', 'one', 5);
-        $this->assertEquals(5, $this->object->get('first_section', 'one'));
-        $this->object->set('once', false);
-        $this->assertEquals(false, $this->object->get('once'));
-    }
 }
