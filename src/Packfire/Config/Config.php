@@ -15,7 +15,7 @@ namespace Packfire\Config;
  * @package Packfire\Config
  * @since 1.0.0
  */
-abstract class Config implements ConfigInterface
+class Config implements ConfigInterface
 {
     /**
      * The pathname to the configuration file
@@ -42,19 +42,6 @@ abstract class Config implements ConfigInterface
     }
 
     /**
-     * Read the configuration file
-     * @since 1.0.0
-     */
-    abstract public function read();
-
-    /**
-     * Write to a configuration file
-     * @param string $file (optional) The name of the file to write to. If not provided, it will write over the original file.
-     * @since 1.0.3
-     */
-    abstract public function write($file = null);
-
-    /**
      * Set the defaults for missing configuration
      * @param \Packfire\Config\ConfigInterface $defaults The default configuration to place
      * @since 1.0.0
@@ -72,16 +59,6 @@ abstract class Config implements ConfigInterface
     public function merge(ConfigInterface $config)
     {
         $this->data = ArrayUtility::mergeRecursiveDistinct($this->data, $config->get());
-    }
-
-    /**
-     * Get the path to the file loaded
-     * @return string Returns the path to the configuration file.
-     * @since 1.0.0
-     */
-    public function file()
-    {
-        return $this->file;
     }
 
     /**
