@@ -18,6 +18,12 @@ namespace Packfire\Config;
 interface FileInterface
 {
     /**
+     * Create the File object with a file
+     * @since 1.1.0
+     */
+    public function __construct($file);
+
+    /**
      * Read the configuration file
      * @since 1.1.0
      */
@@ -35,5 +41,5 @@ interface FileInterface
      * @return string Returns the path to the configuration file.
      * @since 1.1.0
      */
-    public function file()
+    public function file();
 }
