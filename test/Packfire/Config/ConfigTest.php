@@ -37,10 +37,13 @@ class ConfigTest extends PHPUnit_Framework_TestCase
 
     public function testGet()
     {
-        $this->assertNotNull($this->object->get('first_section'));
         $this->assertNotNull($this->object->get('second_section'));
+        $this->assertNotNull($this->object->get('first_section'));
         $this->assertNotNull($this->object->get('third_section'));
         $this->assertCount(3, $this->object->get());
+
+        $this->assertNull($this->object->get('second_section', 'Singapore'));
+        $this->assertEquals($this->object->get('second_section', 'path'), $this->object->get('second_section', 'path', 'ranger'));
 
         $this->assertEquals(1, $this->object->get('first_section', 'one'));
         $this->assertEquals('BIRD', $this->object->get('first_section', 'animal'));
