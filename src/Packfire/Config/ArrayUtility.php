@@ -17,7 +17,7 @@ namespace Packfire\Config;
  */
 class ArrayUtility
 {
-    public static function mergeRecursiveDistinct(&$array1, &$array2)
+    public static function mergeRecursiveDistinct($array1, $array2)
     {
         $merged = $array1;
         foreach ($array2 as $key => &$value) {
