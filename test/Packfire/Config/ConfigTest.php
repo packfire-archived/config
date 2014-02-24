@@ -63,5 +63,10 @@ class ConfigTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(5, $this->object->get('first_section', 'one'));
         $this->object->set('once', false);
         $this->assertEquals(false, $this->object->get('once'));
+
+        $this->object->set('alpha_section', 'one', null);
+        $this->assertEquals(null, $this->object->get('alpha_section', 'one'));
+        $this->object->set('alpha_section', 'one', 'real', true);
+        $this->assertEquals(array('real' => true), $this->object->get('alpha_section', 'one'));
     }
 }
