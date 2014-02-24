@@ -35,6 +35,28 @@ class ConfigTest extends PHPUnit_Framework_TestCase
         $property->setValue($this->object, $data);
     }
 
+    public function testDefaults()
+    {
+        $defaultConfig = new Config();
+
+        $property = new \ReflectionProperty($defaultConfig, 'data');
+        $property->setAccessible(true);
+        $data = array(
+            'alpha_section' => array(
+                'real' => true
+            ),
+            'second_section' => array(
+                'path' => '/bun',
+                'URL' => 'http://example.com/~username'
+            )
+        );
+        $property->setValue($defaultConfig, $data);
+
+        $this->object->defaults($defaultConfig);
+        $this->assertEquals(true, $this->object->get('alpha_section', 'real'));
+        $this->assertEquals('/usr/local/bin', $this->object->get('second_section', 'path'));
+    }
+
     public function testGet()
     {
         $this->assertNotNull($this->object->get('second_section'));
