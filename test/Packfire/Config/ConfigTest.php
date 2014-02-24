@@ -57,6 +57,28 @@ class ConfigTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('/usr/local/bin', $this->object->get('second_section', 'path'));
     }
 
+    public function testMerge()
+    {
+        $config = new Config();
+
+        $property = new \ReflectionProperty($config, 'data');
+        $property->setAccessible(true);
+        $data = array(
+            'alpha_section' => array(
+                'real' => true
+            ),
+            'second_section' => array(
+                'path' => '/bun',
+                'URL' => 'http://example.com/~username'
+            )
+        );
+        $property->setValue($config, $data);
+
+        $this->object->merge($config);
+        $this->assertEquals(true, $this->object->get('alpha_section', 'real'));
+        $this->assertEquals('/bun', $this->object->get('second_section', 'path'));
+    }
+
     public function testGet()
     {
         $this->assertNotNull($this->object->get('second_section'));
