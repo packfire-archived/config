@@ -20,6 +20,7 @@ interface FileInterface
     /**
      * Create the File object with a file
      * @since 1.1.0
+     * @return void
      */
     public function __construct($file);
 

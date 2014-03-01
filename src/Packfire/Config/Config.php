@@ -90,6 +90,7 @@ class Config implements ConfigInterface
      * @param string $key,... The key of the data to load.
      * @param mixed $value,... The value to set
      * @since 1.0.2
+     * @return void
      */
     public function set($key, $value)
     {

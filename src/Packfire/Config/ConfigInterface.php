@@ -33,6 +33,9 @@ interface ConfigInterface
      */
     public function get();
 
+    /**
+     * @return void
+     */
     public function set($key, $value);
 
     public function defaults(ConfigInterface $defaults);

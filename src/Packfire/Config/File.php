@@ -28,6 +28,7 @@ abstract class File extends Config implements FileInterface
      * Create a new configuration file
      * @param string $file Name of the configuration file to load
      * @since 1.1.0
+     * @return void
      */
     public function __construct($file)
     {
@@ -36,7 +37,7 @@ abstract class File extends Config implements FileInterface
 
     /**
      * Get the loaded configuration file path
-     * @return A string consisting the config file path
+     * @return string A string consisting the config file path
      * @since 1.1.0
      */
     public function file()
