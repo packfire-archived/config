@@ -20,12 +20,12 @@ class ConfigFactory
     /**
      * Load a configuration file
      * @param string $file Path to the configuration file
-     * @param \Packfire\Config\Config $defaults (optional) The default configuration data to load with.
-     * @return \Packfire\Config\Config Returns the loaded configuration, or NULL if failed to
+     * @param \Packfire\Config\ConfigInterface $defaults (optional) The default configuration data to load with.
+     * @return \Packfire\Config\ConfigInterface Returns the loaded configuration, or NULL if failed to
      *                 find the appropriate configuration parser.
      * @since 1.0
      */
-    public function load($file, $defaults = null)
+    public function load($file, ConfigInterface $defaults = null)
     {
         $map = ConfigType::typeMap();
         $ext = pathinfo($file, PATHINFO_EXTENSION);
